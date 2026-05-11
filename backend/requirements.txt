@@ -1,0 +1,12 @@
+fastapi
+uvicorn[standard]
+pydantic
+sentence-transformers
+chromadb
+scikit-learn
+youtube-transcript-api
+google-generativeai
+python-multipart
+yt-dlp
+assemblyai
+python-dotenv

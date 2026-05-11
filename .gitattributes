@@ -1,0 +1,23 @@
+# Auto-detect text files and ensure LF line endings in the repo
+* text=auto eol=lf
+
+# Explicitly set shell scripts to LF
+*.sh text eol=lf
+
+# Windows batch files stay CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg binary
+*.ttf binary
+*.woff binary
+*.woff2 binary
+*.mp4 binary
+*.mp3 binary
+*.wav binary

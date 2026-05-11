@@ -1,0 +1,180 @@
+/* ─── Responsive overrides ──────────────────────────────────────────────────── */
+
+/* Tablet (≤1024px) */
+@media (max-width: 1024px) {
+  #root {
+    padding: 16px;
+  }
+
+  /* Hero headline */
+  h1.font-display {
+    font-size: 3.8rem !important;
+  }
+
+  /* Step cards → 2 columns */
+  .step-cards-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* Feature grid → 2 columns */
+  .feature-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 2rem !important;
+  }
+
+  /* Why-choose section padding */
+  .why-choose-section {
+    padding: 4rem 2rem !important;
+  }
+
+  /* Workspace – stack columns */
+  .workspace-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  /* Right column: restore natural height */
+  .workspace-right-col {
+    height: auto !important;
+  }
+}
+
+/* Mobile (≤768px) */
+@media (max-width: 768px) {
+  /* Navbar */
+  nav {
+    padding: 0 1.5rem !important;
+    height: 64px !important;
+  }
+
+  .nav-links {
+    display: none !important;
+  }
+
+  .nav-cta-group {
+    gap: 0.75rem !important;
+  }
+
+  .nav-cta-group .ghost {
+    display: none !important;
+  }
+
+  /* Main offset */
+  main {
+    padding-top: 80px !important;
+  }
+
+  /* Hero */
+  h1.font-display {
+    font-size: 2.6rem !important;
+    line-height: 1.15 !important;
+  }
+
+  .hero-section {
+    margin: 3rem auto 2rem !important;
+    padding: 0 1rem !important;
+  }
+
+  .hero-subtitle {
+    font-size: 1.05rem !important;
+  }
+
+  /* Platform icons */
+  .platform-icons {
+    gap: 1.2rem !important;
+    flex-wrap: wrap !important;
+  }
+
+  /* Chrome badge */
+  .chrome-badge {
+    padding: 0.75rem 1.5rem !important;
+    flex-wrap: wrap;
+    gap: 1rem !important;
+  }
+
+  /* Step cards → single column */
+  .step-cards-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .step-card {
+    padding: 2rem !important;
+  }
+
+  /* Feature grid → single column */
+  .feature-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Section spacing */
+  .section-container {
+    margin: 4rem auto !important;
+    padding: 0 1rem !important;
+  }
+
+  .section-title {
+    font-size: 2rem !important;
+    margin-bottom: 2.5rem !important;
+  }
+
+  /* Why-choose */
+  .why-choose-section {
+    border-radius: 2rem !important;
+    padding: 3rem 1.5rem !important;
+  }
+
+  /* Ingest panel */
+  .ingest-badge {
+    font-size: 0.75rem !important;
+    top: -28px !important;
+  }
+
+  /* glass-panel padding */
+  .glass-panel {
+    padding: 1.25rem !important;
+    border-radius: 1rem !important;
+  }
+
+  /* Workspace header – stack */
+  .workspace-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 1rem !important;
+  }
+
+  .workspace-stats {
+    flex-wrap: wrap !important;
+    gap: 1rem !important;
+  }
+
+  /* Footer */
+  footer {
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+    text-align: center !important;
+    padding: 3rem 1.5rem !important;
+  }
+
+  .footer-links {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 1rem !important;
+  }
+}
+
+/* Small phones (≤480px) */
+@media (max-width: 480px) {
+  h1.font-display {
+    font-size: 2rem !important;
+  }
+
+  .hero-badge {
+    font-size: 0.8rem !important;
+    padding: 0.4rem 1rem !important;
+  }
+
+  .chrome-badge {
+    justify-content: center !important;
+    text-align: center !important;
+  }
+}

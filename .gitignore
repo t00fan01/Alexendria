@@ -1,0 +1,62 @@
+# ─── Python ────────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+*.pyo
+*.pyd
+.Python
+
+# ─── Virtual Environments ──────────────────────────────────────────────────────
+.venv/
+.venv-*/
+venv/
+env/
+ENV/
+
+# ─── Secrets & Environment ────────────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+secrets.yaml
+credentials*
+*.ini
+
+# ─── Database / Vector Store ──────────────────────────────────────────────────
+chroma_db/
+*.db
+*.sqlite
+
+# ─── Media / Temp files ───────────────────────────────────────────────────────
+temp/
+tmp/
+*.wav
+*.mp3
+*.mp4
+*.webm
+*.m4a
+*.flac
+temp_*.wav
+
+# ─── Frontend build artifacts ─────────────────────────────────────────────────
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/*.log
+*.log
+
+# ─── OS / Editor ──────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ─── Test / Debug scripts (not needed for deploy) ─────────────────────────────
+scripts/
+backend/data/
+
+# ─── Package manager ──────────────────────────────────────────────────────────
+# Keep package-lock.json for reproducibility

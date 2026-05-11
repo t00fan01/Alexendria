@@ -1,0 +1,14 @@
+{
+  "name": "ai-learning-companion-node-backend",
+  "version": "1.0.0",
+  "description": "Simple Express MVP for loading YouTube lecture transcripts and answering questions.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.3",
+    "youtube-transcript": "^1.2.1"
+  }
+}
