@@ -10,7 +10,7 @@
 
 **The #1 Free AI-powered video summarizer — get expert-level summaries, key moments, and interactive Q&A from any YouTube video in one click.**
 
-[🚀 Live Demo](#) · [📖 Docs](#api-reference) · [🐛 Report Bug](https://github.com/your-username/AI-Learning-Companion/issues) · [✨ Request Feature](https://github.com/your-username/AI-Learning-Companion/issues)
+[🚀 Live Demo](#) · [📖 API Docs](#api-reference) · [🐛 Report Bug](https://github.com/t00fan01/Alexendria/issues) · [✨ Request Feature](https://github.com/t00fan01/Alexendria/issues)
 
 </div>
 
@@ -25,25 +25,26 @@
 | 🧠 **AI Summaries** | Gemini-powered overall, topic-wise, and last-N-minutes summaries |
 | 💬 **Contextual Q&A** | RAG-based chat with streaming responses and timestamp citations |
 | ⏱️ **Timeline Navigation** | Click any timestamp to jump to that exact moment in the video |
+| 📊 **Video Chapters** | Auto-generated chapters with animated loading state |
 | 🗺️ **Topic Mind Map** | Visual breakdown of key concepts from the video |
 | 📱 **Fully Responsive** | Works beautifully on desktop, tablet, and mobile |
-| 🔌 **Chrome Extension Ready** | Architecture designed for seamless extension integration |
 
 ---
 
 ## 🏗️ Architecture
 
 ```
-AI-Learning-Companion/
+Alexendria/
 ├── backend/                  # FastAPI Python backend
 │   ├── main.py               # API routes & job orchestration
 │   ├── ingest.py             # YouTube & file ingestion pipeline
 │   ├── rag.py                # Retrieval-Augmented Generation (Q&A)
 │   ├── summarizer.py         # Multi-mode AI summarization
+│   ├── quiz.py               # Quiz generation via Gemini
 │   ├── session.py            # Conversation memory
 │   ├── requirements.txt      # Python dependencies
 │   └── utils/
-│       ├── chunker.py        # Transcript segmentation
+│       ├── chunker.py
 │       ├── transcript_store.py
 │       ├── quick_summary.py
 │       └── env_loader.py
@@ -59,17 +60,19 @@ AI-Learning-Companion/
 │   │   │   ├── ChatPanel.jsx
 │   │   │   ├── SummaryDashboard.jsx
 │   │   │   ├── Timeline.jsx
+│   │   │   ├── QuizPanel.jsx
+│   │   │   ├── PdfExport.jsx
 │   │   │   └── SkeletonLoader.jsx
 │   │   └── api/              # API client helpers
 │   └── index.html
 ├── render.yaml               # One-click Render.com deploy config
-├── .env.example              # Environment variable template
+├── .env.example              # Environment variable template (safe to commit)
 └── README.md
 ```
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Quick Start (For Developers)
 
 ### Prerequisites
 
@@ -78,53 +81,79 @@ AI-Learning-Companion/
 - A **Google Gemini API key** → [Get one free](https://aistudio.google.com/app/apikey)
 - An **AssemblyAI API key** *(optional, for file upload)* → [Get one free](https://www.assemblyai.com/)
 
-### 1. Clone the Repository
+---
+
+### Step 1 — Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/AI-Learning-Companion.git
-cd AI-Learning-Companion
+git clone https://github.com/t00fan01/Alexendria.git
+cd Alexendria
 ```
 
-### 2. Configure Environment Variables
+---
+
+### Step 2 — Configure Environment Variables
 
 ```bash
-cp .env.example .env
+# Copy the safe template
+copy .env.example .env      # Windows
+# cp .env.example .env      # macOS/Linux
 ```
 
-Edit `.env` and fill in your API keys:
+Open `.env` and fill in your API keys:
 
 ```env
 GOOGLE_API_KEY=your_google_gemini_api_key_here
 ASSEMBLYAI_API_KEY=your_assemblyai_api_key_here
 ```
 
-### 3. Run the Backend
+> ⚠️ **Never commit your `.env` file.** It is already listed in `.gitignore`.
 
-```bash
-# Create and activate virtual environment
+---
+
+### Step 3 — Set Up & Run the Backend
+
+```powershell
+# Create a virtual environment
 python -m venv .venv
-.venv\Scripts\activate          # Windows
-# source .venv/bin/activate    # macOS/Linux
+
+# Activate it (Windows)
+.\.venv\Scripts\Activate.ps1
 
 # Install dependencies
 pip install -r backend/requirements.txt
 
 # Start the API server
-uvicorn backend.main:app --reload --port 8000
+python -m uvicorn backend.main:app --reload --port 8000
 ```
 
-The backend will be available at `http://localhost:8000`  
-Swagger docs: `http://localhost:8000/docs`
+The backend API will be live at:
+- **API Root:** http://localhost:8000
+- **Swagger Docs:** http://localhost:8000/docs
 
-### 4. Run the Frontend
+---
 
-```bash
+### Step 4 — Set Up & Run the Frontend
+
+Open a **new terminal** (keep the backend running):
+
+```powershell
 cd frontend
 npm install
 npm run dev
 ```
 
-The app will be available at `http://localhost:5173`
+The app will be available at **http://localhost:5173** 🎉
+
+---
+
+### One-liner to launch both (Windows)
+
+```powershell
+# From the project root — opens two PowerShell windows
+start powershell -ArgumentList '-NoExit', '-Command', 'python -m uvicorn backend.main:app --reload --port 8000'
+start powershell -ArgumentList '-NoExit', '-Command', 'cd .\frontend; npm run dev'
+```
 
 ---
 
@@ -150,30 +179,20 @@ The app will be available at `http://localhost:5173`
 
 ### Deploy to Render (Recommended — Free Tier)
 
-1. Push this repo to GitHub
+1. Fork this repo to your GitHub account
 2. Go to [render.com](https://render.com) → **New** → **Blueprint**
 3. Connect your GitHub repo — Render will auto-detect `render.yaml`
-4. Add your environment variables (`GOOGLE_API_KEY`, `ASSEMBLYAI_API_KEY`) in the Render dashboard
+4. Add your environment variables in the Render dashboard:
+   - `GOOGLE_API_KEY`
+   - `ASSEMBLYAI_API_KEY`
 5. Deploy! 🎉
 
-### Deploy Frontend to Vercel / Netlify
+### Deploy Frontend to Vercel
 
 ```bash
 cd frontend
 npm run build
-# Upload the `dist/` folder to Vercel, Netlify, or any static host
-```
-
-### Deploy Backend to Railway / Fly.io
-
-```bash
-# Railway
-railway init
-railway up
-
-# Fly.io
-fly launch
-fly deploy
+# Upload the dist/ folder to Vercel or Netlify
 ```
 
 ---
@@ -184,7 +203,10 @@ fly deploy
 |---|---|---|
 | `GOOGLE_API_KEY` | ✅ Yes | Google Gemini API key for AI summarization & Q&A |
 | `ASSEMBLYAI_API_KEY` | ⚠️ Optional | AssemblyAI key for file upload transcription |
+| `YOUTUBE_API_KEY` | ⚠️ Optional | YouTube Data API for richer video metadata |
 | `ENABLE_CHROMA` | ❌ No | Set to `1` to enable persistent ChromaDB vector store |
+| `ENABLE_EMBEDDINGS` | ❌ No | Set to `1` to enable semantic embedding search |
+| `ENABLE_YOUTUBE_ASR` | ❌ No | Set to `0` to disable YouTube caption extraction |
 
 ---
 
@@ -193,20 +215,20 @@ fly deploy
 - [x] YouTube ingestion pipeline
 - [x] Local file upload with AssemblyAI
 - [x] Streaming Q&A chat
-- [x] Timeline navigation
+- [x] Timeline navigation with animated loading state
 - [x] Topic-wise summaries
+- [x] PDF export of study notes
+- [x] Quiz generation via Gemini
 - [x] Fully responsive design
 - [ ] **Chrome Extension** *(coming soon)*
 - [ ] User accounts & saved sessions
 - [ ] Multi-language support
-- [ ] Podcast & Spotify episode support
-- [ ] Export to Notion / Markdown
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions are welcome!
 
 1. Fork the repo
 2. Create your feature branch (`git checkout -b feature/amazing-feature`)
@@ -218,38 +240,10 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## 📄 License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the MIT License.
 
----
-
-## 🙏 Acknowledgments
-
-- [Google Gemini](https://deepmind.google/technologies/gemini/) — AI summarization & Q&A
-- [AssemblyAI](https://www.assemblyai.com/) — Audio transcription
-- [yt-dlp](https://github.com/yt-dlp/yt-dlp) — YouTube audio extraction
-- [FastAPI](https://fastapi.tiangolo.com/) — Python web framework
-- [Vite + React](https://vitejs.dev/) — Frontend tooling
----------------
-
-extesion 
-
-🟦 Frontend Layer
-User + Chrome Extension
-Handles interaction + data capture
-🟩 Backend Layer
-API Server
-Routes requests + manages logic
-🧠 AI Layer
-Processing Engine
-Analysis + embeddings + scoring
-🗄️ Data Layer
-Vector DB / Storage
-Stores processed content for retrieval
-⚡ Output Layer
-Q&A + Guidance
-Final user-facing intelligence
 ---
 
 <div align="center">
-  Made with 🌿 by <a href="https://github.com/krishna-7126">Team Lemon</a>
+  Made with 🌿 by Team Lemon
 </div>
