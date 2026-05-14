@@ -9,4 +9,4 @@ google-generativeai
 python-multipart
 yt-dlp
 assemblyai
-python-dotenv
+python-dotenv.1.0
