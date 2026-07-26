@@ -154,4 +154,6 @@ def get_last_minutes_summary(video_id, minutes: int = 5):
         return {"summary": "No content available", "timestamp": 0}
 
     summary_text, timestamp = get_last_n_minutes_summary(chunks, minutes)
-    return {"summary": _clip(summary_text, 600), "timestamp": timestamp}
+    return {"summary": _clip(summary_text, 600), "timestamp": timestamp}ef
+
+def get_
