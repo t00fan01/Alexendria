@@ -1,4 +1,4 @@
-# 🌿 Alexandria – AI Video Learning Companion
+#  Alexandria – AI Video Learning Companion
 
 <div align="center">
 
